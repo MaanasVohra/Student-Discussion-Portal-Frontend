@@ -1,0 +1,21 @@
+.sidenav-trigger {
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+.sidenav-container {
+    position: fixed;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+.sidenav-content {
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+}

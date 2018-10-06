@@ -1,0 +1,53 @@
+<div class="login-component">
+  <div class="login-content">
+    <h2>Login/Sign Up</h2>
+    <form class="example-form" #signupForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="inputUser.userRollNumber" placeholder="Roll Number" class="form-control" value="" name="userRollNumber" id="userRollNumber" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="inputUser.userPassword" placeholder="Password" class="form-control" value="" name="userPassword" id="userPassword" type="password" required>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="inputUser.userName" placeholder="Name" class="form-control" value="" name="userName" id="userName" required>
+        </mat-form-field>
+      </div>
+
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="inputUser.userEmailID" placeholder="Email ID" class="form-control" value="" name="userEmailID" id="userEmailID" email="true" required>
+        </mat-form-field>
+      </div>
+
+
+      <!-- <mat-select placeholder="User Type" name="userType" class="example-full-width">
+        <mat-option *ngFor="let userType of userTypes" [value]="userType.value">
+          {{userType.viewValue}}
+        </mat-option>
+      </mat-select> -->
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <mat-select class="form-control" [(ngModel)]="inputUser.userType" placeholder="User type" name="userType" id="userType" required>
+            <mat-option *ngFor="let userType of userTypes" [value]="userType.value">
+              {{userType.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+      <div class="signup-buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>

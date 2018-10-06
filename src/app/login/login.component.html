@@ -1,0 +1,28 @@
+<div class="login-component">
+    <div class="login-content">
+        <h2>Login/Sign Up</h2>
+
+
+        <form class="example-form" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="loginUser.userRollNumber" name="userRollNumber" placeholder="Roll Number" value="" required>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <input matInput [(ngModel)]="loginUser.userPassword" name="userPassword" placeholder="Password" value="" type="password" required>
+                </mat-form-field>
+            </div>
+
+            <div class="login-buttons">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Login</button>
+                <button mat-raised-button color="primary">
+                    <a routerLink="/signup">New User? Sign up!</a>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

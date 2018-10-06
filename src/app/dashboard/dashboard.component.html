@@ -1,0 +1,42 @@
+<div class="dashboard-component">
+  <mat-drawer-container>
+    <mat-drawer mode="side" opened class="dashboard-sidenav-content">
+      <!-- Side nav content -->
+      <mat-accordion class="dashboard-sidenav-expansion">
+        <!-- editor for adding new topic -->
+        <app-editor [topicEditor]="true"></app-editor>
+        <mat-expansion-panel *ngFor="let topic of topics">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ topic.topicName }}
+            </mat-panel-title>
+            <mat-panel-description>
+              <!-- Add topic description, to be done later -->
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="mat-panel-expansion-content">
+            <mat-nav-list class="subtopic-list">
+
+              <!-- Editor for the topic, to add a new subtopic -->
+              <app-editor [topicEditor]="false"></app-editor>
+
+              <a mat-list-item *ngFor="let subtopic of topic.subtopics">{{ subtopic }}</a>
+              <!-- <a mat-list-item href="/dashboard" role="listitem">SubTopic 1</a>
+                  <a mat-list-item href="#" role="listitem">SubTopic 2</a>
+                  <a mat-list-item href="#" role="listitem">SubTopic 3</a> -->
+            </mat-nav-list>
+          </div>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </mat-drawer>
+    <mat-drawer-content class="dashboard-main-content">
+
+      <!-- Main Dashboard Content -->
+      Main Dashboard Content
+
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

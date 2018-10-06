@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Default angular theme */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+/* Toolbar settings */
+/* In order for toolbar to remove whitespace caused by margin */
+body {
+    margin: 0px;
+}
+
