@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # StudentDiscussionPortalFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
@@ -29,4 +28,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # Student-Discussion-Portal-Frontend
 Student Query Portal Frontend built using Angular
->>>>>>> de4489c603be465f5bb393f465b04c248194f92a
