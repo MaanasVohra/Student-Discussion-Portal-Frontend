@@ -28,3 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # Student-Discussion-Portal-Frontend
 Student Query Portal Frontend built using Angular
+
+This is a student query portal which will be an SPA built in Angular. It will be used to address the queries of students and could be used for other purposes as well.
+The topics for the queries will have subtopics, and for each subtopic there will be a number of questions. Each question could be answered by the students and students can comment on the answers as well.
