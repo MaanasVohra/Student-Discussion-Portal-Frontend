@@ -1,7 +1,93 @@
-<div *ngIf="!topicEditor" class="editor-content">
-  <button mat-raised-button color="primary">New Subtopic</button>
-</div> 
+<!-- For the subtopic editor -->
+<div *ngIf="subtopicEditor" class="editor-content">
+  <div *ngIf="!activated">
+    <button mat-raised-button color="primary" (click)="activateEditor()">New Subtopic</button>
+  </div>
+  <div *ngIf="activated">
+    <form #newSubtopicForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Subtopic Name" name="subtopicName" [(ngModel)]="currentSubtopic.subtopicName" required>
+      </mat-form-field>
+      <button type="submit" [disabled]="!newSubtopicForm.form.valid">Submit</button>
+    </form>
+    <button (click)="deactivateEditor()">Cancel</button>
+  </div>
+</div>
 
+<!-- For the topic editor -->
 <div *ngIf="topicEditor" class="editor-content">
-    <button mat-raised-button color="primary">New Topic</button>
-</div> 
+  <div *ngIf="!activated">
+    <button mat-raised-button color="primary" (click)="activateEditor()">New Topic</button>
+  </div>
+  <div *ngIf="activated">
+    <form #newTopicForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Topic Name" name="topicName" [(ngModel)]="currentTopic.topicName" required>
+      </mat-form-field>
+      <button type="submit" [disabled]="!newTopicForm.form.valid">Submit</button>
+    </form>
+    <button (click)="deactivateEditor()">Cancel</button>
+  </div>
+</div>
+
+<!-- For the question editor -->
+<div *ngIf="questionEditor" class="question-editor">
+  <div *ngIf="!activated">
+    <button mat-raised-button color="primary" (click)="activateEditor()">New Question</button>
+  </div>
+  <div *ngIf="activated">
+    <mat-card>
+      <mat-card-header></mat-card-header>
+      <mat-card-content>
+        <div class="question-editor-form">
+          <form #newQuestionForm="ngForm" (ngSubmit)="onSubmit()" class="question-editor-form-input">
+            <mat-form-field>
+              <input matInput placeholder="Question Heading" name="questionHeading" class="question-input-form" [(ngModel)]="currentQuestion.questionHeading"
+                required/>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Question Subheading" name="questionSubheading" class="question-input-form" [(ngModel)]="currentQuestion.questionSubheading"
+                required/>
+            </mat-form-field>
+            <mat-form-field>
+              <textarea matInput placeholder="Question Content" name="questionContent" class="question-input-form" [(ngModel)]="currentQuestion.questionContent"
+                required></textarea>
+            </mat-form-field>
+            <button type="submit" [disabled]="!newQuestionForm.form.valid" id="question-editor-form-submit">Submit</button>
+          </form>
+          <button (click)="deactivateEditor()">Cancel</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- For answer editor -->
+<div *ngIf="answerEditor">
+  <mat-card>
+    <mat-card-title></mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+    <mat-card-content>
+      <form #newAnswerForm="ngForm" (ngSubmit)="onSubmit()" class="answer-editor-form-input">
+        <mat-form-field>
+          <input matInput placeholder="Answer Content" name="answerContent" [(ngModel)]="currentAnswer.answerContent" required/>
+        </mat-form-field>
+        <button mat-button type="submit" [disabled]="!newAnswerForm.form.valid">Submit</button>
+      </form>
+      <button mat-button (click)="deactivateEditor()">Cancel</button>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- For comment editor -->
+<div *ngIf="commentEditor">
+  <div>
+    <form #newCommentForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <textarea matInput placeholder="Comment Content" name="commentContent" [(ngModel)]="currentComment.commentContent" required ></textarea>
+      </mat-form-field>
+      <button mat-button type="submit" [disabled]="!newCommentForm.form.valid">Submit</button>
+    </form>
+    <button mat-button (click)="deactivateEditor()">Cancel</button>
+  </div>
+</div>

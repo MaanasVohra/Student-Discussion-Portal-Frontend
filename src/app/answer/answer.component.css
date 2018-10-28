@@ -1,0 +1,23 @@
+.answer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.answer-comments {
+    display: flex;
+}
+
+.answer-button {
+    outline: none;
+    border-style: none;
+}
+
+.answer-subcontent {
+    display: flex;
+}
+
+.answer-edit-form,
+.answer-edit-form-input {
+    display: flex;
+    align-items: baseline;
+}

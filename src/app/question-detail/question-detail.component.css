@@ -1,0 +1,26 @@
+.question-detail-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.question-detail-subheading, .question-detail-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.answers, .question-detail-editor {
+    margin-top: 30px;
+}
+
+.answer {
+    margin-bottom: 20px;
+}
+
+.question-button {
+    outline: none;
+    border-style: none;
+}
+
+.question-detail-sideButtons {
+    display: flex;
+}

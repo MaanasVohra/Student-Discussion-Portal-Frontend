@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { Topic } from './topic';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,4 +31,15 @@ export class TopicService {
         catchError(this.handleError('getTopicsAndSubtopics', []))
       );
   }
+
+  // create a new topic
+  addTopic(inputTopic : Topic) : Observable<any> {
+    return this.http.post<any>("http://localhost:3000/api/topics", inputTopic, httpOptions)
+    .pipe(
+      tap(function(response : any) {
+        response = of(response);
+      }),
+      catchError(this.handleError<any>('Creation of new topic'))
+    );
+  } 
 }

@@ -1,0 +1,20 @@
+<div *ngIf="currentDisplayedQuestionListItems">
+  <app-editor [subtopicName]="subtopicName" [questionEditor]="true" (refreshQuestionListItemsRequest)="refreshQuestionListItems($event)"></app-editor>
+  <div *ngIf="currentDisplayedQuestionListItems.length === 0">
+    No questions available, create new asap!
+  </div>
+  <div *ngFor="let questionListItem of currentDisplayedQuestionListItems" class="question-list">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ questionListItem.questionHeading }}</mat-card-title>
+        <mat-card-subtitle>{{ questionListItem.questionCreator }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="question-list-subheading">
+        <div class="question-list-subheading-content">
+          {{ questionListItem.questionSubheading }}
+        </div>
+        <button mat-button color="primary" (click)="readMore(questionListItem.questionNumber)">Read More</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

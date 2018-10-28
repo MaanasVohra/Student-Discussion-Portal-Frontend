@@ -4,3 +4,16 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.question-editor {
+    margin-bottom: 20px;
+}
+
+.question-editor-form, .question-editor-form-input, .answer-editor-form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+#question-editor-form-submit {
+    margin-bottom: 20px;
+}

@@ -4,7 +4,7 @@
       <!-- Side nav content -->
       <mat-accordion class="dashboard-sidenav-expansion">
         <!-- editor for adding new topic -->
-        <app-editor [topicEditor]="true"></app-editor>
+        <app-editor [topicEditor]="true" (refreshDashboardSidenavRequest)="refreshDashboardSidenav($event)"></app-editor>
         <mat-expansion-panel *ngFor="let topic of topics">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -19,9 +19,9 @@
             <mat-nav-list class="subtopic-list">
 
               <!-- Editor for the topic, to add a new subtopic -->
-              <app-editor [topicEditor]="false"></app-editor>
+              <app-editor [subtopicEditor]="true" [topicName]="topic.topicName" (refreshDashboardSidenavRequest)="refreshDashboardSidenav($event)"></app-editor>
 
-              <a mat-list-item *ngFor="let subtopic of topic.subtopics">{{ subtopic }}</a>
+              <a mat-list-item *ngFor="let subtopic of topic.subtopics" (click)="onSelectSubtopic(subtopic)">{{ subtopic }}</a>
               <!-- <a mat-list-item href="/dashboard" role="listitem">SubTopic 1</a>
                   <a mat-list-item href="#" role="listitem">SubTopic 2</a>
                   <a mat-list-item href="#" role="listitem">SubTopic 3</a> -->
@@ -34,8 +34,12 @@
     </mat-drawer>
     <mat-drawer-content class="dashboard-main-content">
 
-      <!-- Main Dashboard Content -->
-      Main Dashboard Content
+      <div class="main-content">
+        <!-- Main Dashboard Content -->
+        <div *ngIf="currentSubtopicName">
+          <app-question-list-item [subtopicName]="currentSubtopicName"></app-question-list-item>
+        </div>
+      </div>
 
     </mat-drawer-content>
   </mat-drawer-container>

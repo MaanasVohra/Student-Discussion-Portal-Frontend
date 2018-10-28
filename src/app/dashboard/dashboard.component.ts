@@ -8,19 +8,30 @@ import { TopicService } from '../topic.service';
 })
 export class DashboardComponent implements OnInit {
 
-  topics : any;
+  topics: any;
+  currentSubtopicName: String;
 
   constructor(
-    private topicService: TopicService
-  ) { this.topics = []; }
+    private topicService: TopicService,
+  ) {
+    this.topics = [];
+  }
+
+  onSelectSubtopic(selectedSubtopicName: String) {
+    this.currentSubtopicName = selectedSubtopicName;
+  }
 
   getTopicsAndSubtopics() {
     this.topicService.getAllTopicsAndSubtopics()
-    .subscribe((result) => {this.topics = result; });
+      .subscribe((result) => { this.topics = result; });
   }
 
   ngOnInit() {
-    console.log()
+    this.getTopicsAndSubtopics();
+  }
+
+  // refresh the sidenav when submitted a new topic/subtopic
+  refreshDashboardSidenav($event) {
     this.getTopicsAndSubtopics();
   }
 

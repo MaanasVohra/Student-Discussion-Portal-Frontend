@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-content>
+    <div class="answer-content">
+      <!-- Display answer content if answer editor is not displayed -->
+      <div *ngIf="!answerEditorDisplayed">
+        {{currentAnswer.answerContent}}
+      </div>
+      <div *ngIf="answerEditorDisplayed">
+        <div class="comment-edit-form">
+          <form #answerEditForm="ngForm" class="answer-edit-form-input" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <input matInput placeholder="answer content" name="answerContent" [(ngModel)]="editableAnswer.answerContent" required />
+            </mat-form-field>
+            <button mat-button type="submit" [disabled]="!answerEditForm.form.valid">Done!</button>
+          </form>
+          <button mat-button (click)="hideAnswerEditorForm()">Cancel</button>
+        </div>
+      </div>
+      <!-- Various buttons -->
+      <div class="answer-subcontent">
+        <div *ngIf="!answerEditorDisplayed">
+          <button class="answer-button">
+            <i class="material-icons" (click)="displayAnswerEditorForm()">edit</i>
+          </button>
+          <button class="answer-button" (click)="deleteAnswer()">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+        <!-- If comments are not displayed -->
+        <div *ngIf="!commentsDisplayed">
+          <button mat-button (click)="displayComments()">View Comments</button>
+        </div>
+        <!-- If comments are displayed -->
+        <div class="answer-comments" *ngIf="commentsDisplayed">
+          <button mat-button (click)="displayEditor()">Add comment</button>
+          <button mat-button (click)="hideComments()">Hide comments</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="commentsDisplayed">
+      <div *ngIf="editorDisplayed">
+        <app-editor [commentEditor]="true" [answerNumber]="currentAnswer.answerNumber" (deactivateEditorRequest)="hideEditor()" (refreshCommentsRequest)="refreshComments()"></app-editor>
+      </div>
+      <mat-list>
+        <mat-list-item *ngFor="let comment of comments">
+          <!-- answer comments -->
+          <app-comment [comment]="comment" (refreshCommentsRequest)="refreshComments()"></app-comment>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card-content>
+</mat-card>

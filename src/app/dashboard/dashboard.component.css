@@ -6,8 +6,17 @@ mat-drawer-container {
     height: 100%;
 }
 
+.dashboard-sidenav-content {
+    max-width: 250px;
+}
+
 .dashboard-main-content {
-    margin-left: 260px;
+    margin-left: 275px !important;
+}
+
+.main-content {
+    width: 90%;
+    margin: 0 auto;
 }
 
 .mat-panel-expansion-content {

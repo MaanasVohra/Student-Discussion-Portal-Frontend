@@ -1,0 +1,29 @@
+<div>
+  <!-- If edit form is not displayed -->
+  <div *ngIf="!editFormDisplayed" class="comment-content">
+    <div>
+      {{currentComment.commentContent}}
+    </div>
+    <div>
+      <button class="comment-button" (click)="displayEditForm()">
+        <i class="material-icons">edit</i>
+      </button>
+      <button class="comment-button" (click)="deleteComment()">
+        <i class="material-icons">delete</i>
+      </button>
+    </div>
+  </div>
+  <!-- If edit form is displayed -->
+  <div *ngIf="editFormDisplayed">
+    <div class="comment-edit-form">
+      <form #commentEditForm="ngForm" class="comment-edit-form-input" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <textarea matInput placeholder="comment content" name="commentContent" [(ngModel)]="editableComment.commentContent" required></textarea>
+        </mat-form-field>
+        <button mat-button type="submit" [disabled]="!commentEditForm.form.valid">Done!</button>
+      </form>
+      <button mat-button (click)="hideEditForm()">Cancel</button>
+    </div>
+  </div>
+
+</div>

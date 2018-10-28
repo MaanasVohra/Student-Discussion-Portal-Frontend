@@ -1,0 +1,54 @@
+<div *ngIf="questionDetails" class="question-detail-container">
+  <!-- Question Details -->
+  <div class="question-detail">
+    <mat-card>
+      <mat-card-title>
+        {{questionDetails.questionHeading}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        <div class="question-detail-subheading">
+          <div>
+            {{questionDetails.questionSubheading}}
+          </div>
+          <div>
+            Created by {{questionDetails.questionCreator}}
+          </div>
+        </div>
+
+      </mat-card-subtitle>
+
+      <mat-card-content>
+        <div class="question-detail-content">
+          <div>
+            {{questionDetails.questionContent}}
+          </div>
+          <div class="question-detail-sideButtons">
+            <div>
+              <button class="question-button" (click)="deleteQuestion()"><i class="material-icons">delete</i></button>
+            </div>
+            <div *ngIf="!editorActivated">
+              <button mat-button (click)="activateEditor()">Add Answer</button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="questionDetails && answers && editorActivated" class="question-detail-editor">
+    <app-editor [answerEditor]="true" [questionNumber]="questionNumber" (deactivateEditorRequest)="deactivateEditor()" (refreshAnswersRequest)="refreshAnswers()"></app-editor>
+  </div>
+
+  <!-- Answers -->
+  <div *ngIf="questionDetails && answers" class="answers">
+    <div *ngFor="let answer of answers" class="answer">
+      <app-answer [currentAnswer]="answer" (refreshAnswersRequest)="refreshAnswers()"></app-answer>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!questionDetails" class="question-detail-container">
+  <p>
+    Unable to display information for the question. :/
+  </p>
+</div>

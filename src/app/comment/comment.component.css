@@ -1,0 +1,23 @@
+:host {
+    width: 100%;
+}
+
+.comment-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-button {
+    outline: none;
+    border-style: none;
+}
+
+.comment-edit-form {
+    display: flex;
+    align-items: baseline;
+}
+
+.comment-edit-form-input {
+    display: flex;
+    align-items: baseline;
+}

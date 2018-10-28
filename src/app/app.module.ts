@@ -18,8 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
+import {MatDividerModule} from '@angular/material/divider';
 
 // custom components
 import { AppComponent } from './app.component';
@@ -28,9 +27,12 @@ import { Browser } from 'protractor';
 import { AppRoutingModule } from './/app-routing.module';
 import { AboutComponent } from './about/about.component';
 import { SignupComponent } from './signup/signup.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditorComponent } from './editor/editor.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { QuestionListItemComponent } from './question-list-item/question-list-item.component';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { AnswerComponent } from './answer/answer.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +40,12 @@ import { EditorComponent } from './editor/editor.component';
     LoginComponent,
     AboutComponent,
     SignupComponent,
-    DashboardComponent,
     EditorComponent,
+    DashboardComponent,
+    QuestionListItemComponent,
+    QuestionDetailComponent,
+    AnswerComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +63,7 @@ import { EditorComponent } from './editor/editor.component';
     MatSnackBarModule,
     MatExpansionModule,
     MatDialogModule,
+    MatDividerModule,
     AppRoutingModule
   ],
   providers: [],
