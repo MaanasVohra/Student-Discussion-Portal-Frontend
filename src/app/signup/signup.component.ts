@@ -23,8 +23,8 @@ export class SignupComponent implements OnInit {
     public snackBar: MatSnackBar,
     private userService: UserService) {
     this.userTypes = [
-      { value: 'Admin', viewValue: 'Admin(God)' },
-      { value: 'Student', viewValue: 'Student(Gandu)' }
+      { value: 'Admin', viewValue: 'Admin' },
+      { value: 'Student', viewValue: 'Student' }
     ];
 
     this.inputUser = new User("IIT2016067", "Password123", "Maanas Vohra", "maanas@gmail.com", this.userTypes[0].value);

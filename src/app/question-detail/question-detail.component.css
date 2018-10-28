@@ -24,3 +24,9 @@
 .question-detail-sideButtons {
     display: flex;
 }
+
+.question-edit-form {
+    display: flex;
+    flex-direction: column;
+}
+

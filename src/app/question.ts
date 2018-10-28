@@ -1,9 +1,9 @@
 export class Question {
     constructor(
-        public questionCreator: String,
-        public subtopicName: String, 
-        public questionHeading: String,
-        public questionSubheading: String,
-        public questionContent: String
+        public questionCreator: string,
+        public subtopicName: string, 
+        public questionHeading: string,
+        public questionSubheading: string,
+        public questionContent: string
     ){}
 }

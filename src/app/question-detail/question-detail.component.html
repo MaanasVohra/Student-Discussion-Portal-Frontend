@@ -2,29 +2,51 @@
   <!-- Question Details -->
   <div class="question-detail">
     <mat-card>
-      <mat-card-title>
-        {{questionDetails.questionHeading}}
-      </mat-card-title>
-      <mat-card-subtitle>
-        <div class="question-detail-subheading">
-          <div>
-            {{questionDetails.questionSubheading}}
+      <div *ngIf="!questionEditorActivated">
+        <mat-card-title>
+          {{questionDetails.questionHeading}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div class="question-detail-subheading">
+            <div *ngIf="!questionEditorActivated">
+              {{questionDetails.questionSubheading}}
+            </div>
+            <div>
+              Created by {{questionDetails.questionCreator}}
+            </div>
           </div>
-          <div>
-            Created by {{questionDetails.questionCreator}}
-          </div>
-        </div>
+        </mat-card-subtitle>
+      </div>
 
-      </mat-card-subtitle>
+      <div *ngIf="questionEditorActivated">
+        <form #editQuestionForm="ngForm" class="question-edit-form" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput placeholder="questionHeading" name="questionHeading" [(ngModel)]="editableQuestion.questionHeading" required/>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="questionSubheading" name="questionSubheading" [(ngModel)]="editableQuestion.questionSubheading" required/>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="questionContent" name="questionContent" [(ngModel)]="editableQuestion.questionContent" required/>
+          </mat-form-field>
+          <button mat-button type="submit" [disabled]="!editQuestionForm.form.valid">Submit</button>
+        </form>
+        <button mat-button (click)="deactivateQuestionEditor()">Cancel</button>
+      </div>
 
       <mat-card-content>
         <div class="question-detail-content">
-          <div>
+          <div *ngIf="!questionEditorActivated">
             {{questionDetails.questionContent}}
           </div>
-          <div class="question-detail-sideButtons">
+          <div class="question-detail-sideButtons" *ngIf="!questionEditorActivated">
             <div>
-              <button class="question-button" (click)="deleteQuestion()"><i class="material-icons">delete</i></button>
+              <button class="question-button" (click)="activateQuestionEditor()">
+                <i class="material-icons">edit</i>
+              </button>
+              <button class="question-button" (click)="deleteQuestion()">
+                <i class="material-icons">delete</i>
+              </button>
             </div>
             <div *ngIf="!editorActivated">
               <button mat-button (click)="activateEditor()">Add Answer</button>

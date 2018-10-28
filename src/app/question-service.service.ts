@@ -59,4 +59,18 @@ export class QuestionService {
       catchError(this.handleError('deleting question', -1))
     );
   }
+
+  // editing a question 
+  editQuestion(questionNumber: number, questionHeading: string, questionSubheading: string, questionContent: string) : Observable<number> {
+    const url = 'http://localhost:3000/api/questions/' + questionNumber;
+    const message = {
+      questionHeading: questionHeading,
+      questionSubheading: questionSubheading,
+      questionContent: questionContent
+    }
+    return this.http.put<number>(url, message, httpOptions)
+    .pipe(
+      catchError(this.handleError('editing question', -1))
+    );
+  }
 }

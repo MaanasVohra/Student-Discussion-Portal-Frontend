@@ -26,8 +26,8 @@ export class EditorComponent implements OnInit {
   @Input() answerEditor: boolean;
   @Input() commentEditor: boolean;
 
-  @Input() topicName: String;
-  @Input() subtopicName: String;
+  @Input() topicName: string;
+  @Input() subtopicName: string;
   @Input() questionNumber: number;
   @Input() answerNumber: number;
 
