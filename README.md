@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # StudentDiscussionPortalFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
@@ -29,4 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # Student-Discussion-Portal-Frontend
 Student Query Portal Frontend built using Angular
->>>>>>> de4489c603be465f5bb393f465b04c248194f92a
+
+This is a student query portal which will be an SPA built in Angular. It will be used to address the queries of students and could be used for other purposes as well.
+The topics for the queries will have subtopics, and for each subtopic there will be a number of questions. Each question could be answered by the students and students can comment on the answers as well.
